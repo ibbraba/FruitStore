@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.doranco.dao.Dao;
 import com.doranco.dao.DaoFactory;
+import com.doranco.metier.Adresse;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
