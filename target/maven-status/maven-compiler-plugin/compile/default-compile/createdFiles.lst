@@ -1,0 +1,10 @@
+com\doranco\metier\Utilisateur.class
+com\doranco\metier\Params.class
+com\doranco\metier\Commande.class
+com\doranco\metier\Article.class
+com\doranco\metier\LigneDeCommande.class
+com\doranco\metier\Adresse.class
+com\doranco\metier\CartePaiement.class
+com\doranco\metier\Categorie.class
+com\doranco\metier\Commentaire.class
+com\doranco\metier\ArticlePanier.class
