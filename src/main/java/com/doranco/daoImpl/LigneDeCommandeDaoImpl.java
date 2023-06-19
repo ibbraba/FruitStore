@@ -8,22 +8,27 @@ import java.util.List;
 
 import com.doranco.dao.Dao;
 import com.doranco.dao.DaoFactory;
+import com.doranco.metier.CartePaiement;
+import com.doranco.metier.Categorie;
+import com.doranco.metier.Commande;
+import com.doranco.metier.Commentaire;
+import com.doranco.metier.LigneDeCommande;
 import com.doranco.metier.Utilisateur;
 
 /**
  *
  * @author celes
  */
-public class UtilisateurDaoImpl implements Dao<Utilisateur>{
+public class LigneDeCommandeDaoImpl implements Dao<LigneDeCommande>{
 
     private DaoFactory daoFactory;
     
-    public UtilisateurDaoImpl() {
+    public LigneDeCommandeDaoImpl() {
         this.daoFactory = DaoFactory.getInstance();
     }
     
     @Override
-    public void create(Utilisateur U) {
+    public void create(LigneDeCommande L) {
         EntityManager entityManager = null;
         EntityTransaction entityTransaction = null;
         
@@ -33,12 +38,12 @@ public class UtilisateurDaoImpl implements Dao<Utilisateur>{
             entityTransaction = entityManager.getTransaction();
             entityTransaction.begin();
             
-            entityManager.persist(U);
+            entityManager.persist(L);
             
             entityTransaction.commit();
-            System.out.println("*** Création Success ! **");
+            System.out.println("*** Ligne de commande crée success ! **");
         }catch(Exception e) {
-            System.out.println("*** Erreur lors de la création d'un utilisateur !! ***");
+            System.out.println("*** Erreur création ligne de commande !! ***");
             System.out.println("Message: " + e.getMessage());
             if(entityTransaction != null)
                 entityTransaction.rollback();
@@ -50,17 +55,17 @@ public class UtilisateurDaoImpl implements Dao<Utilisateur>{
     }
 
     @Override
-    public Utilisateur findBy(int id) {
+    public LigneDeCommande findBy(int id) {
         
         EntityManager entityManager = null;
         
-        Utilisateur user = new Utilisateur();
+        LigneDeCommande ligneCommande = new LigneDeCommande();
         
         try{
             entityManager = daoFactory.getEntityManager();
             
-            user = entityManager.find(Utilisateur.class, id);
-            if(user == null)
+            ligneCommande = entityManager.find(LigneDeCommande.class, id);
+            if(ligneCommande == null)
                 System.out.println("Erreur avec l'id "+id+ " n'existe pas en DB");
         }catch(Exception e) {
             System.out.println("Erreur de recherche id " + id+ " inexistant en DB");
@@ -69,45 +74,35 @@ public class UtilisateurDaoImpl implements Dao<Utilisateur>{
             if(entityManager != null)
                 entityManager.close();
         }
-        return user;
+        return ligneCommande;
     }
 
     @Override
-    public void update(Utilisateur u, int id) {
+    public void update(LigneDeCommande l, int id) {
         EntityManager entityManager = null;
         EntityTransaction entityTransaction = null;
         
         try {
             entityManager = daoFactory.getEntityManager();
             
-            Utilisateur userDB = entityManager.find(Utilisateur.class, id);
-            if(userDB == null) {
-                System.out.println("L'utilisateur avec l'id " + id + " est inexistant en base !");
+            LigneDeCommande ligneCommandeDB = entityManager.find(LigneDeCommande.class, id);
+            if(ligneCommandeDB == null) {
+                System.out.println("La ligne de commande avec l'id " + id + " est inexistant en base !");
             }else {
-            	userDB.setNom(u.getNom());
-            	userDB.setNom(u.getPrenom());
-            	userDB.setDateNaissance(u.getDateNaissance());
-            	userDB.setActif(u.isActif());
-            	userDB.setProfil(u.getProfil());
-            	userDB.setEmail(u.getEmail());
-            	userDB.setEmail(u.getEmail());
-            	userDB.setPassword(u.getPassword());
-            	userDB.setPassword(u.getPassword());
-            	userDB.setTelephine(u.getTelephine());
-            	userDB.setAdresse(u.getAdresse());
-            	userDB.setCommande(u.getCommande());
-            	userDB.setCartesDePaiement(u.getCartesDePaiement());
-            	userDB.setCommentaires(u.getCommentaires());
-            	userDB.setPanier(u.getPanier());
+            	ligneCommandeDB.setQuantite(l.getQuantite());
+            	ligneCommandeDB.setPrixUnitaire(l.getPrixUnitaire());
+            	ligneCommandeDB.setRemiseArticle(l.getRemiseArticle());
+            	ligneCommandeDB.setCommande(l.getCommande());
+            	ligneCommandeDB.setArticle(l.getArticle());
                 
                 entityTransaction = entityManager.getTransaction();
                 entityTransaction.begin();
                 
-                entityManager.persist(userDB);
+                entityManager.persist(ligneCommandeDB);
                 entityTransaction.commit();
             }
         }catch(Exception e) {
-                System.out.println("Erreur update livre ");
+                System.out.println("Erreur mise à jour ligne de commande ");
                 System.out.println("Message: " + e.getMessage());
                 if(entityTransaction != null)
                     entityTransaction.rollback();
@@ -124,19 +119,19 @@ public class UtilisateurDaoImpl implements Dao<Utilisateur>{
 
         try {
             entityManager = daoFactory.getEntityManager();
-            Utilisateur userDB = entityManager.find(Utilisateur.class, id);
-            if (userDB == null) {
-                System.out.println("Livre avec id " + id + " inexistant !");
+            LigneDeCommande ligneCommande = entityManager.find(LigneDeCommande.class, id);
+            if (ligneCommande == null) {
+                System.out.println("Ligne de commande avec id " + id + " inexistant !");
             } else {
                 entityTransaction = entityManager.getTransaction();
 
                 entityTransaction.begin();
-                entityManager.remove(userDB);
+                entityManager.remove(ligneCommande);
                 entityTransaction.commit();
                 System.out.println("Suppression Success !");
             }
         } catch (Exception e) {
-            System.out.println ("Erreur lors de la suppression d'un utilisateur avec l'id " + id);
+            System.out.println ("Erreur lors de la suppression d'une ligne de commande avec l'id " + id);
             System.out.println("Message : " + e.getMessage());
             if (entityTransaction != null) {
                 entityTransaction.rollback();
@@ -149,22 +144,22 @@ public class UtilisateurDaoImpl implements Dao<Utilisateur>{
     }
 
     @Override
-    public List<Utilisateur> findAll() {
+    public List<LigneDeCommande> findAll() {
         EntityManager entityManager = null;
-        List<Utilisateur> listeUsers = new ArrayList<>();
+        List<LigneDeCommande> ligneCommande = new ArrayList<>();
         
         try {
             entityManager = daoFactory.getEntityManager();
             
-            Query query = entityManager.createQuery("SELECT e FROM User e");
-            listeUsers = query.getResultList();
+            Query query = entityManager.createQuery("SELECT l FROM LIGNE_COMMANDE l");
+            ligneCommande = query.getResultList();
             
         }catch(Exception e) {
-            System.out.println("Erreur édition liste livres !");
+            System.out.println("Erreur recherche liste ligne de commande !");
             System.out.println("Message: " + e.getMessage());
         }
         
-        return listeUsers;
+        return ligneCommande;
     }
 
 }

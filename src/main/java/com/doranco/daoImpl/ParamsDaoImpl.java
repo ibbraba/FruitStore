@@ -8,22 +8,28 @@ import java.util.List;
 
 import com.doranco.dao.Dao;
 import com.doranco.dao.DaoFactory;
+import com.doranco.metier.CartePaiement;
+import com.doranco.metier.Categorie;
+import com.doranco.metier.Commande;
+import com.doranco.metier.Commentaire;
+import com.doranco.metier.LigneDeCommande;
+import com.doranco.metier.Params;
 import com.doranco.metier.Utilisateur;
 
 /**
  *
  * @author celes
  */
-public class UtilisateurDaoImpl implements Dao<Utilisateur>{
+public class ParamsDaoImpl implements Dao<Params>{
 
     private DaoFactory daoFactory;
     
-    public UtilisateurDaoImpl() {
+    public ParamsDaoImpl() {
         this.daoFactory = DaoFactory.getInstance();
     }
     
     @Override
-    public void create(Utilisateur U) {
+    public void create(Params P) {
         EntityManager entityManager = null;
         EntityTransaction entityTransaction = null;
         
@@ -33,12 +39,12 @@ public class UtilisateurDaoImpl implements Dao<Utilisateur>{
             entityTransaction = entityManager.getTransaction();
             entityTransaction.begin();
             
-            entityManager.persist(U);
+            entityManager.persist(P);
             
             entityTransaction.commit();
-            System.out.println("*** Création Success ! **");
+            System.out.println("*** Paramètre crée success ! **");
         }catch(Exception e) {
-            System.out.println("*** Erreur lors de la création d'un utilisateur !! ***");
+            System.out.println("*** Erreur création paramètre !! ***");
             System.out.println("Message: " + e.getMessage());
             if(entityTransaction != null)
                 entityTransaction.rollback();
@@ -50,17 +56,17 @@ public class UtilisateurDaoImpl implements Dao<Utilisateur>{
     }
 
     @Override
-    public Utilisateur findBy(int id) {
+    public Params findBy(int id) {
         
         EntityManager entityManager = null;
         
-        Utilisateur user = new Utilisateur();
+        Params params = new Params();
         
         try{
             entityManager = daoFactory.getEntityManager();
             
-            user = entityManager.find(Utilisateur.class, id);
-            if(user == null)
+            params = entityManager.find(Params.class, id);
+            if(params == null)
                 System.out.println("Erreur avec l'id "+id+ " n'existe pas en DB");
         }catch(Exception e) {
             System.out.println("Erreur de recherche id " + id+ " inexistant en DB");
@@ -69,45 +75,32 @@ public class UtilisateurDaoImpl implements Dao<Utilisateur>{
             if(entityManager != null)
                 entityManager.close();
         }
-        return user;
+        return params;
     }
 
     @Override
-    public void update(Utilisateur u, int id) {
+    public void update(Params p, int id) {
         EntityManager entityManager = null;
         EntityTransaction entityTransaction = null;
         
         try {
             entityManager = daoFactory.getEntityManager();
             
-            Utilisateur userDB = entityManager.find(Utilisateur.class, id);
-            if(userDB == null) {
-                System.out.println("L'utilisateur avec l'id " + id + " est inexistant en base !");
+            Params paramsDB = entityManager.find(Params.class, id);
+            if(paramsDB == null) {
+                System.out.println("Le paramètre avec l'id " + id + " est inexistant en base !");
             }else {
-            	userDB.setNom(u.getNom());
-            	userDB.setNom(u.getPrenom());
-            	userDB.setDateNaissance(u.getDateNaissance());
-            	userDB.setActif(u.isActif());
-            	userDB.setProfil(u.getProfil());
-            	userDB.setEmail(u.getEmail());
-            	userDB.setEmail(u.getEmail());
-            	userDB.setPassword(u.getPassword());
-            	userDB.setPassword(u.getPassword());
-            	userDB.setTelephine(u.getTelephine());
-            	userDB.setAdresse(u.getAdresse());
-            	userDB.setCommande(u.getCommande());
-            	userDB.setCartesDePaiement(u.getCartesDePaiement());
-            	userDB.setCommentaires(u.getCommentaires());
-            	userDB.setPanier(u.getPanier());
+            	paramsDB.setCle_cryptage_pwd(p.getCle_cryptage_pwd());
+            	paramsDB.setCle_cryptage_cp(p.getCle_cryptage_cp());
                 
                 entityTransaction = entityManager.getTransaction();
                 entityTransaction.begin();
                 
-                entityManager.persist(userDB);
+                entityManager.persist(paramsDB);
                 entityTransaction.commit();
             }
         }catch(Exception e) {
-                System.out.println("Erreur update livre ");
+                System.out.println("Erreur mise à jour du paramètre ");
                 System.out.println("Message: " + e.getMessage());
                 if(entityTransaction != null)
                     entityTransaction.rollback();
@@ -124,19 +117,19 @@ public class UtilisateurDaoImpl implements Dao<Utilisateur>{
 
         try {
             entityManager = daoFactory.getEntityManager();
-            Utilisateur userDB = entityManager.find(Utilisateur.class, id);
-            if (userDB == null) {
-                System.out.println("Livre avec id " + id + " inexistant !");
+            Params params = entityManager.find(Params.class, id);
+            if (params == null) {
+                System.out.println("Le paramètre avec id " + id + " inexistant !");
             } else {
                 entityTransaction = entityManager.getTransaction();
 
                 entityTransaction.begin();
-                entityManager.remove(userDB);
+                entityManager.remove(params);
                 entityTransaction.commit();
                 System.out.println("Suppression Success !");
             }
         } catch (Exception e) {
-            System.out.println ("Erreur lors de la suppression d'un utilisateur avec l'id " + id);
+            System.out.println ("Erreur lors de la suppression d'un paramètre avec l'id " + id);
             System.out.println("Message : " + e.getMessage());
             if (entityTransaction != null) {
                 entityTransaction.rollback();
@@ -149,22 +142,22 @@ public class UtilisateurDaoImpl implements Dao<Utilisateur>{
     }
 
     @Override
-    public List<Utilisateur> findAll() {
+    public List<Params> findAll() {
         EntityManager entityManager = null;
-        List<Utilisateur> listeUsers = new ArrayList<>();
+        List<Params> params = new ArrayList<>();
         
         try {
             entityManager = daoFactory.getEntityManager();
             
-            Query query = entityManager.createQuery("SELECT e FROM User e");
-            listeUsers = query.getResultList();
+            Query query = entityManager.createQuery("SELECT p FROM PARAMETRE p");
+            params = query.getResultList();
             
         }catch(Exception e) {
-            System.out.println("Erreur édition liste livres !");
+            System.out.println("Erreur recherche liste parametres !");
             System.out.println("Message: " + e.getMessage());
         }
         
-        return listeUsers;
+        return params;
     }
 
 }

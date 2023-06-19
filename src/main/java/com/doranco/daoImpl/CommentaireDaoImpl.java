@@ -8,22 +8,26 @@ import java.util.List;
 
 import com.doranco.dao.Dao;
 import com.doranco.dao.DaoFactory;
+import com.doranco.metier.CartePaiement;
+import com.doranco.metier.Categorie;
+import com.doranco.metier.Commande;
+import com.doranco.metier.Commentaire;
 import com.doranco.metier.Utilisateur;
 
 /**
  *
  * @author celes
  */
-public class UtilisateurDaoImpl implements Dao<Utilisateur>{
+public class CommentaireDaoImpl implements Dao<Commentaire>{
 
     private DaoFactory daoFactory;
     
-    public UtilisateurDaoImpl() {
+    public CommentaireDaoImpl() {
         this.daoFactory = DaoFactory.getInstance();
     }
     
     @Override
-    public void create(Utilisateur U) {
+    public void create(Commentaire C) {
         EntityManager entityManager = null;
         EntityTransaction entityTransaction = null;
         
@@ -33,12 +37,12 @@ public class UtilisateurDaoImpl implements Dao<Utilisateur>{
             entityTransaction = entityManager.getTransaction();
             entityTransaction.begin();
             
-            entityManager.persist(U);
+            entityManager.persist(C);
             
             entityTransaction.commit();
-            System.out.println("*** Création Success ! **");
+            System.out.println("*** Commentaire post success ! **");
         }catch(Exception e) {
-            System.out.println("*** Erreur lors de la création d'un utilisateur !! ***");
+            System.out.println("*** Erreur post commentaire !! ***");
             System.out.println("Message: " + e.getMessage());
             if(entityTransaction != null)
                 entityTransaction.rollback();
@@ -50,17 +54,17 @@ public class UtilisateurDaoImpl implements Dao<Utilisateur>{
     }
 
     @Override
-    public Utilisateur findBy(int id) {
+    public Commentaire findBy(int id) {
         
         EntityManager entityManager = null;
         
-        Utilisateur user = new Utilisateur();
+        Commentaire commentaire = new Commentaire();
         
         try{
             entityManager = daoFactory.getEntityManager();
             
-            user = entityManager.find(Utilisateur.class, id);
-            if(user == null)
+            commentaire = entityManager.find(Commentaire.class, id);
+            if(commentaire == null)
                 System.out.println("Erreur avec l'id "+id+ " n'existe pas en DB");
         }catch(Exception e) {
             System.out.println("Erreur de recherche id " + id+ " inexistant en DB");
@@ -69,45 +73,34 @@ public class UtilisateurDaoImpl implements Dao<Utilisateur>{
             if(entityManager != null)
                 entityManager.close();
         }
-        return user;
+        return commentaire;
     }
 
     @Override
-    public void update(Utilisateur u, int id) {
+    public void update(Commentaire c, int id) {
         EntityManager entityManager = null;
         EntityTransaction entityTransaction = null;
         
         try {
             entityManager = daoFactory.getEntityManager();
             
-            Utilisateur userDB = entityManager.find(Utilisateur.class, id);
-            if(userDB == null) {
-                System.out.println("L'utilisateur avec l'id " + id + " est inexistant en base !");
+            Commentaire commentDB = entityManager.find(Commentaire.class, id);
+            if(commentDB == null) {
+                System.out.println("Le commentaire avec l'id " + id + " est inexistant en base !");
             }else {
-            	userDB.setNom(u.getNom());
-            	userDB.setNom(u.getPrenom());
-            	userDB.setDateNaissance(u.getDateNaissance());
-            	userDB.setActif(u.isActif());
-            	userDB.setProfil(u.getProfil());
-            	userDB.setEmail(u.getEmail());
-            	userDB.setEmail(u.getEmail());
-            	userDB.setPassword(u.getPassword());
-            	userDB.setPassword(u.getPassword());
-            	userDB.setTelephine(u.getTelephine());
-            	userDB.setAdresse(u.getAdresse());
-            	userDB.setCommande(u.getCommande());
-            	userDB.setCartesDePaiement(u.getCartesDePaiement());
-            	userDB.setCommentaires(u.getCommentaires());
-            	userDB.setPanier(u.getPanier());
+            	commentDB.setTexte(c.getTexte());
+            	commentDB.setNote(c.getNote());
+            	commentDB.setArticle(c.getArticle());
+            	commentDB.setUtilisateur(c.getUtilisateur());
                 
                 entityTransaction = entityManager.getTransaction();
                 entityTransaction.begin();
                 
-                entityManager.persist(userDB);
+                entityManager.persist(commentDB);
                 entityTransaction.commit();
             }
         }catch(Exception e) {
-                System.out.println("Erreur update livre ");
+                System.out.println("Erreur mise à jour commentaire ");
                 System.out.println("Message: " + e.getMessage());
                 if(entityTransaction != null)
                     entityTransaction.rollback();
@@ -124,19 +117,19 @@ public class UtilisateurDaoImpl implements Dao<Utilisateur>{
 
         try {
             entityManager = daoFactory.getEntityManager();
-            Utilisateur userDB = entityManager.find(Utilisateur.class, id);
-            if (userDB == null) {
-                System.out.println("Livre avec id " + id + " inexistant !");
+            Commentaire comment = entityManager.find(Commentaire.class, id);
+            if (comment == null) {
+                System.out.println("Commande avec id " + id + " inexistant !");
             } else {
                 entityTransaction = entityManager.getTransaction();
 
                 entityTransaction.begin();
-                entityManager.remove(userDB);
+                entityManager.remove(comment);
                 entityTransaction.commit();
                 System.out.println("Suppression Success !");
             }
         } catch (Exception e) {
-            System.out.println ("Erreur lors de la suppression d'un utilisateur avec l'id " + id);
+            System.out.println ("Erreur lors de la suppression d'une commentaire avec l'id " + id);
             System.out.println("Message : " + e.getMessage());
             if (entityTransaction != null) {
                 entityTransaction.rollback();
@@ -149,22 +142,22 @@ public class UtilisateurDaoImpl implements Dao<Utilisateur>{
     }
 
     @Override
-    public List<Utilisateur> findAll() {
+    public List<Commentaire> findAll() {
         EntityManager entityManager = null;
-        List<Utilisateur> listeUsers = new ArrayList<>();
+        List<Commentaire> comment = new ArrayList<>();
         
         try {
             entityManager = daoFactory.getEntityManager();
             
-            Query query = entityManager.createQuery("SELECT e FROM User e");
-            listeUsers = query.getResultList();
+            Query query = entityManager.createQuery("SELECT c FROM CB c");
+            comment = query.getResultList();
             
         }catch(Exception e) {
-            System.out.println("Erreur édition liste livres !");
+            System.out.println("Erreur recherche liste commentaire !");
             System.out.println("Message: " + e.getMessage());
         }
         
-        return listeUsers;
+        return comment;
     }
 
 }

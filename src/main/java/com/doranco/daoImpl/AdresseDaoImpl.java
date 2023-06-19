@@ -80,9 +80,11 @@ public class AdresseDaoImpl implements Dao<Adresse>{
 	            if(adresseDB == null) {
 	                System.out.println("L'adresse avec l'id " + id + " est inexistant en base !");
 	            }else {
-	            	adresseDB.setTitre(a.getTitre());
-	            	adresseDB.setDescription(a.getDescription());
-	            	adresseDB.setIsbn(a.getIsbn());
+	            	adresseDB.setNumero(a.getNumero());
+	            	adresseDB.setRue(a.getRue());
+	            	adresseDB.setVille(a.getVille());
+	            	adresseDB.setCodePostal(a.getCodePostal());
+	            	adresseDB.setUtilisateur(a.getUtilisateur());
 	                
 	                entityTransaction = entityManager.getTransaction();
 	                entityTransaction.begin();
@@ -91,7 +93,7 @@ public class AdresseDaoImpl implements Dao<Adresse>{
 	                entityTransaction.commit();
 	            }
 	        }catch(Exception e) {
-	                System.out.println("Erreur update adresse ");
+	                System.out.println("Erreur mise à jour adresse ");
 	                System.out.println("Message: " + e.getMessage());
 	                if(entityTransaction != null)
 	                    entityTransaction.rollback();
@@ -110,7 +112,7 @@ public class AdresseDaoImpl implements Dao<Adresse>{
 	            entityManager = daoFactory.getEntityManager();
 	            Adresse adresseDB = entityManager.find(Adresse.class, id);
 	            if (adresseDB == null) {
-	                System.out.println("Livre avec id " + id + " inexistant !");
+	                System.out.println("Adresse avec id " + id + " inexistant !");
 	            } else {
 	                entityTransaction = entityManager.getTransaction();
 
@@ -140,11 +142,11 @@ public class AdresseDaoImpl implements Dao<Adresse>{
 	        try {
 	            entityManager = daoFactory.getEntityManager();
 	            
-	            Query query = entityManager.createQuery("SELECT e FROM User e");
+	            Query query = entityManager.createQuery("SELECT a FROM ADRESSE a");
 	            listeAdresses = query.getResultList();
 	            
 	        }catch(Exception e) {
-	            System.out.println("Erreur édition liste livres !");
+	            System.out.println("Erreur recherche liste d'adresses !");
 	            System.out.println("Message: " + e.getMessage());
 	        }
 	        

@@ -8,22 +8,23 @@ import java.util.List;
 
 import com.doranco.dao.Dao;
 import com.doranco.dao.DaoFactory;
+import com.doranco.metier.ArticlePanier;
 import com.doranco.metier.Utilisateur;
 
 /**
  *
  * @author celes
  */
-public class UtilisateurDaoImpl implements Dao<Utilisateur>{
+public class ArticlePanierDaoImpl implements Dao<ArticlePanier>{
 
     private DaoFactory daoFactory;
     
-    public UtilisateurDaoImpl() {
+    public ArticlePanierDaoImpl() {
         this.daoFactory = DaoFactory.getInstance();
     }
     
     @Override
-    public void create(Utilisateur U) {
+    public void create(ArticlePanier A) {
         EntityManager entityManager = null;
         EntityTransaction entityTransaction = null;
         
@@ -33,12 +34,12 @@ public class UtilisateurDaoImpl implements Dao<Utilisateur>{
             entityTransaction = entityManager.getTransaction();
             entityTransaction.begin();
             
-            entityManager.persist(U);
+            entityManager.persist(A);
             
             entityTransaction.commit();
             System.out.println("*** Création Success ! **");
         }catch(Exception e) {
-            System.out.println("*** Erreur lors de la création d'un utilisateur !! ***");
+            System.out.println("*** Erreur lors de l'ajout d'un article au panier !! ***");
             System.out.println("Message: " + e.getMessage());
             if(entityTransaction != null)
                 entityTransaction.rollback();
@@ -50,17 +51,17 @@ public class UtilisateurDaoImpl implements Dao<Utilisateur>{
     }
 
     @Override
-    public Utilisateur findBy(int id) {
+    public ArticlePanier findBy(int id) {
         
         EntityManager entityManager = null;
         
-        Utilisateur user = new Utilisateur();
+        ArticlePanier articlePanier = new ArticlePanier();
         
         try{
             entityManager = daoFactory.getEntityManager();
             
-            user = entityManager.find(Utilisateur.class, id);
-            if(user == null)
+            articlePanier = entityManager.find(ArticlePanier.class, id);
+            if(articlePanier == null)
                 System.out.println("Erreur avec l'id "+id+ " n'existe pas en DB");
         }catch(Exception e) {
             System.out.println("Erreur de recherche id " + id+ " inexistant en DB");
@@ -69,45 +70,33 @@ public class UtilisateurDaoImpl implements Dao<Utilisateur>{
             if(entityManager != null)
                 entityManager.close();
         }
-        return user;
+        return articlePanier;
     }
 
     @Override
-    public void update(Utilisateur u, int id) {
+    public void update(ArticlePanier u, int id) {
         EntityManager entityManager = null;
         EntityTransaction entityTransaction = null;
         
         try {
             entityManager = daoFactory.getEntityManager();
             
-            Utilisateur userDB = entityManager.find(Utilisateur.class, id);
-            if(userDB == null) {
-                System.out.println("L'utilisateur avec l'id " + id + " est inexistant en base !");
+            ArticlePanier articlePanierDB = entityManager.find(ArticlePanier.class, id);
+            if(articlePanierDB == null) {
+                System.out.println("Le panier  avec l'id " + id + " est inexistant en base !");
             }else {
-            	userDB.setNom(u.getNom());
-            	userDB.setNom(u.getPrenom());
-            	userDB.setDateNaissance(u.getDateNaissance());
-            	userDB.setActif(u.isActif());
-            	userDB.setProfil(u.getProfil());
-            	userDB.setEmail(u.getEmail());
-            	userDB.setEmail(u.getEmail());
-            	userDB.setPassword(u.getPassword());
-            	userDB.setPassword(u.getPassword());
-            	userDB.setTelephine(u.getTelephine());
-            	userDB.setAdresse(u.getAdresse());
-            	userDB.setCommande(u.getCommande());
-            	userDB.setCartesDePaiement(u.getCartesDePaiement());
-            	userDB.setCommentaires(u.getCommentaires());
-            	userDB.setPanier(u.getPanier());
+            	articlePanierDB.setArticle(u.getArticle());
+            	articlePanierDB.setQuantite(u.getQuantite());
+            	articlePanierDB.setUtilisateur(u.getUtilisateur());
                 
                 entityTransaction = entityManager.getTransaction();
                 entityTransaction.begin();
                 
-                entityManager.persist(userDB);
+                entityManager.persist(articlePanierDB);
                 entityTransaction.commit();
             }
         }catch(Exception e) {
-                System.out.println("Erreur update livre ");
+                System.out.println("Erreur mise à jour du panier ");
                 System.out.println("Message: " + e.getMessage());
                 if(entityTransaction != null)
                     entityTransaction.rollback();
@@ -124,9 +113,9 @@ public class UtilisateurDaoImpl implements Dao<Utilisateur>{
 
         try {
             entityManager = daoFactory.getEntityManager();
-            Utilisateur userDB = entityManager.find(Utilisateur.class, id);
+            ArticlePanier userDB = entityManager.find(ArticlePanier.class, id);
             if (userDB == null) {
-                System.out.println("Livre avec id " + id + " inexistant !");
+                System.out.println("Le panier avec id " + id + " inexistant !");
             } else {
                 entityTransaction = entityManager.getTransaction();
 
@@ -136,7 +125,7 @@ public class UtilisateurDaoImpl implements Dao<Utilisateur>{
                 System.out.println("Suppression Success !");
             }
         } catch (Exception e) {
-            System.out.println ("Erreur lors de la suppression d'un utilisateur avec l'id " + id);
+            System.out.println ("Erreur lors de la suppression d'un panier avec l'id " + id);
             System.out.println("Message : " + e.getMessage());
             if (entityTransaction != null) {
                 entityTransaction.rollback();
@@ -149,22 +138,22 @@ public class UtilisateurDaoImpl implements Dao<Utilisateur>{
     }
 
     @Override
-    public List<Utilisateur> findAll() {
+    public List<ArticlePanier> findAll() {
         EntityManager entityManager = null;
-        List<Utilisateur> listeUsers = new ArrayList<>();
+        List<ArticlePanier> panier = new ArrayList<>();
         
         try {
             entityManager = daoFactory.getEntityManager();
             
-            Query query = entityManager.createQuery("SELECT e FROM User e");
-            listeUsers = query.getResultList();
+            Query query = entityManager.createQuery("SELECT e FROM PANIER e");
+            panier = query.getResultList();
             
         }catch(Exception e) {
-            System.out.println("Erreur édition liste livres !");
+            System.out.println("Erreur recherche liste paniers !");
             System.out.println("Message: " + e.getMessage());
         }
         
-        return listeUsers;
+        return panier;
     }
 
 }

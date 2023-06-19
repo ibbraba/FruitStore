@@ -8,22 +8,24 @@ import java.util.List;
 
 import com.doranco.dao.Dao;
 import com.doranco.dao.DaoFactory;
+import com.doranco.metier.CartePaiement;
+import com.doranco.metier.Categorie;
 import com.doranco.metier.Utilisateur;
 
 /**
  *
  * @author celes
  */
-public class UtilisateurDaoImpl implements Dao<Utilisateur>{
+public class CategorieDaoImpl implements Dao<Categorie>{
 
     private DaoFactory daoFactory;
     
-    public UtilisateurDaoImpl() {
+    public CategorieDaoImpl() {
         this.daoFactory = DaoFactory.getInstance();
     }
     
     @Override
-    public void create(Utilisateur U) {
+    public void create(Categorie C) {
         EntityManager entityManager = null;
         EntityTransaction entityTransaction = null;
         
@@ -33,12 +35,12 @@ public class UtilisateurDaoImpl implements Dao<Utilisateur>{
             entityTransaction = entityManager.getTransaction();
             entityTransaction.begin();
             
-            entityManager.persist(U);
+            entityManager.persist(C);
             
             entityTransaction.commit();
-            System.out.println("*** Création Success ! **");
+            System.out.println("*** Creation categorie  success ! **");
         }catch(Exception e) {
-            System.out.println("*** Erreur lors de la création d'un utilisateur !! ***");
+            System.out.println("*** Erreur creation catégorie !! ***");
             System.out.println("Message: " + e.getMessage());
             if(entityTransaction != null)
                 entityTransaction.rollback();
@@ -50,17 +52,17 @@ public class UtilisateurDaoImpl implements Dao<Utilisateur>{
     }
 
     @Override
-    public Utilisateur findBy(int id) {
+    public Categorie findBy(int id) {
         
         EntityManager entityManager = null;
         
-        Utilisateur user = new Utilisateur();
+        Categorie paiement = new Categorie();
         
         try{
             entityManager = daoFactory.getEntityManager();
             
-            user = entityManager.find(Utilisateur.class, id);
-            if(user == null)
+            paiement = entityManager.find(Categorie.class, id);
+            if(paiement == null)
                 System.out.println("Erreur avec l'id "+id+ " n'existe pas en DB");
         }catch(Exception e) {
             System.out.println("Erreur de recherche id " + id+ " inexistant en DB");
@@ -69,45 +71,35 @@ public class UtilisateurDaoImpl implements Dao<Utilisateur>{
             if(entityManager != null)
                 entityManager.close();
         }
-        return user;
+        return paiement;
     }
 
     @Override
-    public void update(Utilisateur u, int id) {
+    public void update(Categorie c, int id) {
         EntityManager entityManager = null;
         EntityTransaction entityTransaction = null;
         
         try {
             entityManager = daoFactory.getEntityManager();
             
-            Utilisateur userDB = entityManager.find(Utilisateur.class, id);
-            if(userDB == null) {
-                System.out.println("L'utilisateur avec l'id " + id + " est inexistant en base !");
+            Categorie categorieDB = entityManager.find(Categorie.class, id);
+            if(categorieDB == null) {
+                System.out.println("La categorie avec l'id " + id + " est inexistant en base !");
             }else {
-            	userDB.setNom(u.getNom());
-            	userDB.setNom(u.getPrenom());
-            	userDB.setDateNaissance(u.getDateNaissance());
-            	userDB.setActif(u.isActif());
-            	userDB.setProfil(u.getProfil());
-            	userDB.setEmail(u.getEmail());
-            	userDB.setEmail(u.getEmail());
-            	userDB.setPassword(u.getPassword());
-            	userDB.setPassword(u.getPassword());
-            	userDB.setTelephine(u.getTelephine());
-            	userDB.setAdresse(u.getAdresse());
-            	userDB.setCommande(u.getCommande());
-            	userDB.setCartesDePaiement(u.getCartesDePaiement());
-            	userDB.setCommentaires(u.getCommentaires());
-            	userDB.setPanier(u.getPanier());
+            	categorieDB.setNom(c.getNom());
+            	categorieDB.setRemise(c.getRemise());
+            	categorieDB.setRemiseCumulable(c.isRemiseCumulable());
+            	categorieDB.setPhoto(c.getPhoto());
+            	categorieDB.setArticles(c.getArticles());
                 
                 entityTransaction = entityManager.getTransaction();
                 entityTransaction.begin();
                 
-                entityManager.persist(userDB);
+                entityManager.persist(categorieDB);
                 entityTransaction.commit();
             }
         }catch(Exception e) {
-                System.out.println("Erreur update livre ");
+                System.out.println("Erreur mise à jour categorie ");
                 System.out.println("Message: " + e.getMessage());
                 if(entityTransaction != null)
                     entityTransaction.rollback();
@@ -124,19 +116,19 @@ public class UtilisateurDaoImpl implements Dao<Utilisateur>{
 
         try {
             entityManager = daoFactory.getEntityManager();
-            Utilisateur userDB = entityManager.find(Utilisateur.class, id);
-            if (userDB == null) {
-                System.out.println("Livre avec id " + id + " inexistant !");
+            Categorie categorieDB = entityManager.find(Categorie.class, id);
+            if (categorieDB == null) {
+                System.out.println("Categorie avec id " + id + " inexistant !");
             } else {
                 entityTransaction = entityManager.getTransaction();
 
                 entityTransaction.begin();
-                entityManager.remove(userDB);
+                entityManager.remove(categorieDB);
                 entityTransaction.commit();
                 System.out.println("Suppression Success !");
             }
         } catch (Exception e) {
-            System.out.println ("Erreur lors de la suppression d'un utilisateur avec l'id " + id);
+            System.out.println ("Erreur lors de la suppression d'une categorie avec l'id " + id);
             System.out.println("Message : " + e.getMessage());
             if (entityTransaction != null) {
                 entityTransaction.rollback();
@@ -149,22 +141,22 @@ public class UtilisateurDaoImpl implements Dao<Utilisateur>{
     }
 
     @Override
-    public List<Utilisateur> findAll() {
+    public List<Categorie> findAll() {
         EntityManager entityManager = null;
-        List<Utilisateur> listeUsers = new ArrayList<>();
+        List<Categorie> categorie = new ArrayList<>();
         
         try {
             entityManager = daoFactory.getEntityManager();
             
-            Query query = entityManager.createQuery("SELECT e FROM User e");
-            listeUsers = query.getResultList();
+            Query query = entityManager.createQuery("SELECT c FROM CATEGORIE c");
+            categorie = query.getResultList();
             
         }catch(Exception e) {
-            System.out.println("Erreur édition liste livres !");
+            System.out.println("Erreur recherche liste categories !");
             System.out.println("Message: " + e.getMessage());
         }
         
-        return listeUsers;
+        return categorie;
     }
 
 }
