@@ -19,21 +19,22 @@ import com.doranco.metier.Commentaire;
 
 
 
-@WebService (serviceName = "commentaire")
+@Path("/commentaire")
 public class CommentaireRessource {
 
 	
-	@WebMethod
+	
+	@GET
 	@Path("/test")
-	@Produces(MediaType.APPLICATION_JSON)
 	public String testWebService(){
 		return "OK Web Service";
 	}
 	
 	
-	@WebMethod
-	@PathParam("/{articleId}")
-	@Produces(MediaType.APPLICATION_JSON)
+	@GET
+	@Path("/article")
+	@PathParam("{articleId}")
+	
 	public List<Commentaire> getCommentairesArticle(@PathParam("id") int id) throws SQLException {
 
 		List<Commentaire> listCommentaires = new ArrayList<Commentaire>(); 
@@ -51,8 +52,8 @@ public class CommentaireRessource {
 	
 	
 	
-	@WebMethod
-	@Produces(MediaType.APPLICATION_JSON)
+	@GET
+	@Path("/getall")
 	public Object getCommentaires(@PathParam("login") String login, @PathParam("password") String password) {
 
 		HashMap<Article, ArrayList<Commentaire>> listCommentaires = new HashMap<Article, ArrayList<Commentaire>>();

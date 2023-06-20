@@ -4,18 +4,17 @@
 
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
+   <servlet>
+  	<servlet-name>home</servlet-name>
+  	<display-name>home</display-name>
+  	<description>C'est une servlet</description>
+  	<servlet-class>com.doranco.servlet.HomeServlet</servlet-class>
+  </servlet>
   
-  <servlet>
-    <servlet-name>Commentaire</servlet-name>
-    <servlet-class>org.glassfish.jersey.servlet.ServletContainer</servlet-class>
-    <init-param>
-        <param-name>jersey.config.server.provider.packages</param-name>
-        <param-value>com.restful.java.example</param-value>
-    </init-param>
-    <load-on-startup>1</load-on-startup>
-</servlet>
-<servlet-mapping>
-    <servlet-name>Commentaire</servlet-name>
-    <url-pattern>/api/*</url-pattern>
-</servlet-mapping>
+    <servlet-mapping>
+  	<servlet-name>home</servlet-name>
+  	<url-pattern>/home</url-pattern>
+  </servlet-mapping>
+  
+ 
 </web-app>
