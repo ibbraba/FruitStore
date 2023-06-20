@@ -5,7 +5,8 @@ public class Main {
 
 	public static void main(String[] args) {
 		
-		
+		DaoFactory d = new DaoFactory();
+		d.getInstance();
 	}
 
 }

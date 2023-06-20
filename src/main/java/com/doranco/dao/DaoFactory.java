@@ -1,8 +1,8 @@
 package com.doranco.dao;
 
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.EntityManagerFactory;
-import jakarta.persistence.Persistence;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 
 /**
  *
@@ -12,7 +12,7 @@ public class DaoFactory {
     
     private static DaoFactory DAO_FACTORY;
     private final EntityManagerFactory emf;
-    private final String PU_NAME = "fruitstore";
+    private final String PU_NAME = "fruit";
     
     public DaoFactory() {
         this.emf = Persistence.createEntityManagerFactory(PU_NAME);

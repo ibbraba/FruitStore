@@ -1,14 +1,15 @@
 package com.doranco.metier;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
-import jakarta.validation.constraints.Max;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 @Entity
-@Table(name = "Commenataire")
+@Table(name = "commentaire")
 public class Commentaire {
 
 	@Id
@@ -16,7 +17,11 @@ public class Commentaire {
 	private int id;
 	private String texte;
 	private int note;
+	@ManyToOne
+	@JoinColumn(name="article_id")
 	private Article article;
+	@ManyToOne
+	@JoinColumn(name="utilisateur_id")
 	private Utilisateur utilisateur;
 	
 	public int getId() {
@@ -58,6 +63,5 @@ public class Commentaire {
 	public void setUtilisateur(Utilisateur utilisateur) {
 		this.utilisateur = utilisateur;
 	}
-
 
 }

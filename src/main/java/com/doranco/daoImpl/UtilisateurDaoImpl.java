@@ -1,8 +1,8 @@
 package com.doranco.daoImpl;
 
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.EntityTransaction;
-import jakarta.persistence.Query;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityTransaction;
+import javax.persistence.Query;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -93,7 +93,7 @@ public class UtilisateurDaoImpl implements Dao<Utilisateur>{
             	userDB.setEmail(u.getEmail());
             	userDB.setPassword(u.getPassword());
             	userDB.setPassword(u.getPassword());
-            	userDB.setTelephine(u.getTelephine());
+            	userDB.setTelephone(u.getTelephone());
             	userDB.setAdresse(u.getAdresse());
             	userDB.setCommande(u.getCommande());
             	userDB.setCartesDePaiement(u.getCartesDePaiement());
@@ -156,7 +156,7 @@ public class UtilisateurDaoImpl implements Dao<Utilisateur>{
         try {
             entityManager = daoFactory.getEntityManager();
             
-            Query query = entityManager.createQuery("SELECT e FROM User e");
+            Query query = entityManager.createQuery("SELECT u FROM UTILISATEUR u");
             listeUsers = query.getResultList();
             
         }catch(Exception e) {

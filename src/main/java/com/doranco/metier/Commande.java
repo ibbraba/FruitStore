@@ -1,15 +1,20 @@
 package com.doranco.metier;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 @Entity
-@Table(name="Commande")
+@Table(name="commande")
 public class Commande {
 	
 	@Id
@@ -20,6 +25,7 @@ public class Commande {
 	
 	private LocalDateTime dateCreation; 
 	
+	//@OneToOne : "Association 'com.doranco.metier.Commande.dateLivraison' targets an unknown entity named 'java.time.LocalDateTime"
 	private LocalDateTime dateLivraison;
 	
 	private double totalRemise; 
@@ -28,15 +34,22 @@ public class Commande {
 	
 	private double totalGeneral; 
 	
-	private Adresse adresseFacturation; 
+	@OneToOne
+	private Adresse adresseFacturation; //Check logique adresse Facturation et Livraison .....
 	
+	@OneToOne
 	private Adresse adresseLivraison; 
 	
+	@OneToOne  // NO relation stipulé dans le PDF ??
 	private CartePaiement cartePaiementDefaut; 
 	
+	@ManyToOne
+	@JoinColumn(name="utilisateur_id")
 	private Utilisateur utilisateur; 
 	
-	private LigneDeCommande ligneCommande;
+	@OneToMany(mappedBy = "commande")
+	private List<LigneDeCommande> ligneCommande;
+	//private LigneDeCommande ligneCommande;
 
 	public int getId() {
 		return id;
@@ -126,16 +139,20 @@ public class Commande {
 		this.utilisateur = utilisateur;
 	}
 
-	public LigneDeCommande getLigneCommande() {
-		return ligneCommande;
-	}
-
-	public void setLigneCommande(LigneDeCommande ligneCommande) {
+//	public LigneDeCommande getLigneCommande() {
+//		return ligneCommande;
+//	}
+//
+//	public void setLigneCommande(LigneDeCommande ligneCommande) {
+//		this.ligneCommande = ligneCommande;
+//	}
+	
+	public void setLigneCommande(List<LigneDeCommande> ligneCommande) {
 		this.ligneCommande = ligneCommande;
 	}
 	
+	public List<LigneDeCommande> getLigneCommande() {
+		return ligneCommande;
+	}
 	
-	
-	
-
 }

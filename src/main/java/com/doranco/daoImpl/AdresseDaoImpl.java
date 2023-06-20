@@ -7,9 +7,9 @@ import com.doranco.dao.Dao;
 import com.doranco.dao.DaoFactory;
 import com.doranco.metier.Adresse;
 
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.EntityTransaction;
-import jakarta.persistence.Query;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityTransaction;
+import javax.persistence.Query;
 
 public class AdresseDaoImpl implements Dao<Adresse>{
 
