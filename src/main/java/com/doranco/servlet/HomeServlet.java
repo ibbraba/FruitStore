@@ -23,7 +23,7 @@ public class HomeServlet extends HttpServlet{
 		// TODO Auto-generated method stub
 		System.out.println("Home Servlet");
 		
-		getServletContext().getRequestDispatcher("/WEB-INF/home.jsp").forward(req, resp);
+		getServletContext().getRequestDispatcher("/WEB-INF/acceuil/acceuil.xhtml").forward(req, resp);
 	}
 	
 	@Override

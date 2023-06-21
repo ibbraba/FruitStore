@@ -18,6 +18,7 @@ public class CommandeRessource {
 
 	@GET
 	@Path("/city")
+	
 	public String getNbCommandesParVille() {
 		
 		HashMap<String, Integer> nbCommande = new HashMap<String, Integer>();
