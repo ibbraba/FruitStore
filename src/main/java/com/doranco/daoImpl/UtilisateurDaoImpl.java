@@ -46,9 +46,8 @@ public class UtilisateurDaoImpl implements Dao<Utilisateur>{
             if(entityManager != null)
                 entityManager.close();
         }
-        
     }
-
+    
     @Override
     public Utilisateur findBy(int id) {
         
@@ -107,7 +106,7 @@ public class UtilisateurDaoImpl implements Dao<Utilisateur>{
                 entityTransaction.commit();
             }
         }catch(Exception e) {
-                System.out.println("Erreur update livre ");
+                System.out.println("Erreur mise à jour utilisateur");
                 System.out.println("Message: " + e.getMessage());
                 if(entityTransaction != null)
                     entityTransaction.rollback();
@@ -126,7 +125,7 @@ public class UtilisateurDaoImpl implements Dao<Utilisateur>{
             entityManager = daoFactory.getEntityManager();
             Utilisateur userDB = entityManager.find(Utilisateur.class, id);
             if (userDB == null) {
-                System.out.println("Livre avec id " + id + " inexistant !");
+                System.out.println("Utilisateur avec id " + id + " inexistant !");
             } else {
                 entityTransaction = entityManager.getTransaction();
 
@@ -160,7 +159,7 @@ public class UtilisateurDaoImpl implements Dao<Utilisateur>{
             listeUsers = query.getResultList();
             
         }catch(Exception e) {
-            System.out.println("Erreur édition liste livres !");
+            System.out.println("Erreur recherche liste utilisateurs !");
             System.out.println("Message: " + e.getMessage());
         }
         

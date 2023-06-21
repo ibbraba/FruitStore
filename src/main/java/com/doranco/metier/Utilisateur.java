@@ -1,20 +1,26 @@
 package com.doranco.metier;
 
-import java.time.LocalDateTime;
+import java.sql.Date;
 import java.util.List;
 
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.doranco.utils.Role;
+
 @Entity
 @Table(name="utilisateur")
 public class Utilisateur {
 
+	//TODO: Check GESTION ROLE
+	
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id; 
@@ -23,7 +29,7 @@ public class Utilisateur {
 	
 	private String prenom; 
 	
-	private LocalDateTime DateNaissance; 
+	private Date DateNaissance; 
 	
 	private boolean isActif; 
 	
@@ -34,6 +40,9 @@ public class Utilisateur {
 	private String password; 
 	
 	private String telephone;
+	
+	@Enumerated(EnumType.STRING)
+	private Role role;
 	
 	@OneToMany(mappedBy = "utilisateur")
 	private List<Adresse> adresse;
@@ -54,9 +63,30 @@ public class Utilisateur {
 	@OneToMany(mappedBy = "utilisateur")
 	private List<ArticlePanier> panier;
 	
-//	@Enumerated(EnumType.STRING)
-//	private Role role;
-
+	public Utilisateur() {
+		
+	}
+	
+	public Utilisateur(String nom, String prenom, Date dateNaissance, boolean isActif, String profil,
+			String email, String password, String telephone, Role role, List<Adresse> adresse, List<Commande> commande,
+			List<CartePaiement> cartesDePaiement, List<Commentaire> commentaires, List<ArticlePanier> panier) {
+		super();
+		this.nom = nom;
+		this.prenom = prenom;
+		this.DateNaissance = dateNaissance;
+		this.isActif = isActif;
+		this.profil = profil;
+		this.email = email;
+		this.password = password;
+		this.telephone = telephone;
+		this.role = role;
+		this.adresse = adresse;
+		this.commande = commande;
+		this.cartesDePaiement = cartesDePaiement;
+		this.commentaires = commentaires;
+		this.panier = panier;
+	}
+	
 	public int getId() {
 		return id;
 	}
@@ -81,11 +111,11 @@ public class Utilisateur {
 		this.prenom = prenom;
 	}
 
-	public LocalDateTime getDateNaissance() {
+	public Date getDateNaissance() {
 		return DateNaissance;
 	}
 
-	public void setDateNaissance(LocalDateTime dateNaissance) {
+	public void setDateNaissance(Date dateNaissance) {
 		DateNaissance = dateNaissance;
 	}
 

@@ -8,33 +8,33 @@ import java.util.List;
 public interface Dao<A> {
     
     /**
-     *  Créer un article
+     *  Créer un élément
      * @param a 
      */
     void create(A a);
     
     /**
-     * Recherche un article
+     * Recherche un élément
      * @param id
      * @return 
      */
      A findBy(int id);
      
      /**
-      * Mettre à jour un article
+      * Mettre à jour un élément
       * @param t
       * @param id 
       */
      void update(A a, int id);
      
      /**
-      * Supprimer un article
+      * Supprimer un élément
       * @param id 
       */
      void delete(int id);
      
      /**
-      * Rechercher tous les articles
+      * Rechercher tous les élément
       * @return 
       */
      List<A> findAll();

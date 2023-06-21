@@ -1,12 +1,12 @@
 import com.doranco.dao.DaoFactory;
-import com.doranco.daoImpl.UtilisateurDaoImpl;
 
 public class Main {
 
 	public static void main(String[] args) {
+		//Implémenter Class Role et Enum (Admin, Client, Magasinier)
 		
-		DaoFactory d = new DaoFactory();
-		d.getInstance();
+		DaoFactory dao = new DaoFactory();
+		dao.getInstance();
 	}
 
 }
