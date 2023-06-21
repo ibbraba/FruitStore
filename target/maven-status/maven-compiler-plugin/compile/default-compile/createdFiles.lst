@@ -1,4 +1,5 @@
 com\doranco\dao\Dao.class
+com\doranco\filter\LoginFilter.class
 com\doranco\metier\Utilisateur.class
 com\doranco\metier\Params.class
 com\doranco\dao\DaoFactory.class
@@ -7,7 +8,11 @@ com\doranco\metier\CartePaiement.class
 com\doranco\servlet\HomeServlet.class
 com\doranco\webservices\ressources\CommandeRessource.class
 com\doranco\metier\ArticlePanier.class
+com\doranco\servlet\LoginServlet.class
+com\doranco\servlet\Sinscrire.class
+com\doranco\servlet\LogoutServlet.class
 com\meswebservices\RESTApplication.class
+com\doranco\filter\HomeFilter.class
 com\doranco\metier\Commande.class
 com\doranco\metier\LigneDeCommande.class
 com\doranco\metier\Adresse.class

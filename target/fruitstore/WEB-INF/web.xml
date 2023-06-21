@@ -3,22 +3,56 @@
  "http://java.sun.com/dtd/web-app_2_3.dtd" >
 
 <web-app>
-  <display-name>Archetype Created Web Application</display-name>
-   <servlet>
-  	<servlet-name>home</servlet-name>
-  	<display-name>home</display-name>
-  	<description>C'est une servlet</description>
-  	<servlet-class>com.doranco.servlet.HomeServlet</servlet-class>
-  </servlet>
-  
-    <servlet-mapping>
-  	<servlet-name>home</servlet-name>
-  	<url-pattern>/home</url-pattern>
-  </servlet-mapping>
-  
-   <servlet-mapping>
-      <servlet-name>Faces Servlet</servlet-name>
-        <url-pattern>*.xhtml</url-pattern>
-    </servlet-mapping>
- 
+	<display-name>Archetype Created Web Application</display-name>
+	<servlet>
+		<servlet-name>Home</servlet-name>
+		<display-name>home</display-name>
+		<description>C'est une servlet</description>
+		<servlet-class>com.doranco.servlet.HomeServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>Home</servlet-name>
+		<url-pattern>/home</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>Login</servlet-name>
+		<display-name>login</display-name>
+		<description>C'est une servlet</description>
+		<servlet-class>com.doranco.servlet.LoginServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>Login</servlet-name>
+		<url-pattern>/login</url-pattern>
+	</servlet-mapping>
+
+
+	<servlet>
+		<servlet-name>Logout</servlet-name>
+		<display-name>logout</display-name>
+		<description>C'est une servlet</description>
+		<servlet-class>com.doranco.servlet.LogoutServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>Logout</servlet-name>
+		<url-pattern>/logout</url-pattern>
+	</servlet-mapping>
+
+
+	<filter>
+		<filter-name>HomeFilter</filter-name>
+		<filter-class>com.doranco.filter.HomeFilter</filter-class>
+	</filter>
+
+	<filter-mapping>
+		<filter-name>HomeFilter</filter-name>
+		<url-pattern>/home</url-pattern>
+	</filter-mapping>
+	<!-- <filter> <filter-name>LoginFilter</filter-name> <filter-class>com.doranco.filter.LoginFilter</filter-class> 
+		</filter> <filter-mapping> <filter-name>LoginFilter</filter-name> <url-pattern>/login</url-pattern> 
+		</filter-mapping> -->
+
 </web-app>
