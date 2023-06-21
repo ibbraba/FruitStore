@@ -1,4 +1,5 @@
 com\doranco\dao\Dao.class
+com\doranco\servlet\SinscrireServlet.class
 com\doranco\metier\Utilisateur.class
 com\doranco\daoImpl\CommentaireDaoImpl.class
 com\doranco\metier\Article.class
@@ -6,12 +7,12 @@ com\doranco\servlet\HomeServlet.class
 com\doranco\daoImpl\UtilisateurDaoImpl.class
 com\doranco\metier\ArticlePanier.class
 com\doranco\servlet\LoginServlet.class
-com\doranco\servlet\Sinscrire.class
 com\doranco\daoImpl\AdresseDaoImpl.class
 Main.class
 com\doranco\metier\Adresse.class
 com\doranco\webservices\ressources\CommentaireRessource.class
 com\doranco\daoImpl\LigneDeCommandeDaoImpl.class
+com\doranco\filter\SinscrireFilter.class
 com\doranco\metier\Categorie.class
 com\doranco\filter\LoginFilter.class
 com\doranco\metier\Params.class

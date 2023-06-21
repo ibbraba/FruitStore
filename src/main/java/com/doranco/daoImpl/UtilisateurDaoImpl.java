@@ -72,6 +72,35 @@ public class UtilisateurDaoImpl implements Dao<Utilisateur>{
         return user;
     }
 
+    
+    public Utilisateur findByCredentials(String email, String password) {
+        
+        EntityManager entityManager = null;
+        
+        Utilisateur utilisateur = new Utilisateur();
+        
+        try{
+            entityManager = daoFactory.getEntityManager();
+            
+            var query = entityManager.createQuery("SELECT * FROM utilisateur WHERE email=:email AND password=:password");
+            query.setParameter("email", email);
+            query.setParameter("password", password);
+            
+             utilisateur = (Utilisateur) query.getSingleResult();
+            if(utilisateur == null) {
+            	 System.out.println("User not found");
+            	
+            }
+        }catch(Exception e) {
+           // System.out.println("Erreur de recherche id " + id+ " inexistant en DB");
+            System.out.println("Message: " + e.getMessage());
+         }finally {
+            if(entityManager != null)
+                entityManager.close();
+        }
+        return utilisateur;
+    }
+    
     @Override
     public void update(Utilisateur u, int id) {
         EntityManager entityManager = null;
@@ -166,5 +195,7 @@ public class UtilisateurDaoImpl implements Dao<Utilisateur>{
         
         return listeUsers;
     }
+    
+    
 
 }

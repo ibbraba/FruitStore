@@ -62,5 +62,15 @@
 		<url-pattern>/login</url-pattern>
 	</filter-mapping>
 	
+	<filter>
+		<filter-name>SinscrireFilter</filter-name>
+		<filter-class>com.doranco.filter.SinscrireFilter</filter-class>
+	</filter>
+
+	<filter-mapping>
+		<filter-name>SinscrireFilter</filter-name>
+		<url-pattern>/inscription</url-pattern>
+	</filter-mapping>
+	
 
 </web-app>

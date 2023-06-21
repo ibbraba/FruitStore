@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.doranco.daoImpl.UtilisateurDaoImpl;
 import com.doranco.metier.Utilisateur;
 
 public class LoginServlet extends HttpServlet{
@@ -45,9 +46,10 @@ public class LoginServlet extends HttpServlet{
 		String password = req.getParameter("password");
 		System.out.println("login : " + login + " passowrd : " + password);
 		
-		Utilisateur utilisateur = new Utilisateur(); 
-		utilisateur.setNom(login);
-		utilisateur.setPassword(password);
+		Utilisateur utilisateur = FindUtilisateur(login, password);
+		
+		
+
 		
 		HttpSession session=req.getSession();
 		//FIND UTILISATEUR
@@ -77,5 +79,13 @@ public class LoginServlet extends HttpServlet{
 		
 		
 		
+	}
+	
+	
+	public Utilisateur FindUtilisateur(String email, String password) {
+		UtilisateurDaoImpl utilisateurdDaoImpl = new UtilisateurDaoImpl();
+		Utilisateur utilisateur = utilisateurdDaoImpl.findByCredentials(email, password);
+		return utilisateur;		
+				 
 	}
 }
