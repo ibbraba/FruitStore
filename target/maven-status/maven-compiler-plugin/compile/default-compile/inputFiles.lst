@@ -1,46 +1,31 @@
-<<<<<<< HEAD
+C:\Users\33651\Desktop\Cours Doranco\EVALUATION PROJET JAVA\fruitstore\src\main\java\Main.java
 C:\Users\33651\Desktop\Cours Doranco\EVALUATION PROJET JAVA\fruitstore\src\main\java\com\doranco\dao\Dao.java
 C:\Users\33651\Desktop\Cours Doranco\EVALUATION PROJET JAVA\fruitstore\src\main\java\com\doranco\metier\LigneDeCommande.java
-C:\Users\33651\Desktop\Cours Doranco\EVALUATION PROJET JAVA\fruitstore\src\main\java\com\doranco\metier\Commentaire.java
 C:\Users\33651\Desktop\Cours Doranco\EVALUATION PROJET JAVA\fruitstore\src\main\java\com\doranco\filter\LoginFilter.java
+C:\Users\33651\Desktop\Cours Doranco\EVALUATION PROJET JAVA\fruitstore\src\main\java\com\doranco\daoImpl\ArticlePanierDaoImpl.java
+C:\Users\33651\Desktop\Cours Doranco\EVALUATION PROJET JAVA\fruitstore\src\main\java\com\doranco\metier\Commande.java
+C:\Users\33651\Desktop\Cours Doranco\EVALUATION PROJET JAVA\fruitstore\src\main\java\com\doranco\daoImpl\CommentaireDaoImpl.java
+C:\Users\33651\Desktop\Cours Doranco\EVALUATION PROJET JAVA\fruitstore\src\main\java\com\doranco\daoImpl\LigneDeCommandeDaoImpl.java
+C:\Users\33651\Desktop\Cours Doranco\EVALUATION PROJET JAVA\fruitstore\src\main\java\com\doranco\daoImpl\ParamsDaoImpl.java
+C:\Users\33651\Desktop\Cours Doranco\EVALUATION PROJET JAVA\fruitstore\src\main\java\com\doranco\servlet\HomeServlet.java
+C:\Users\33651\Desktop\Cours Doranco\EVALUATION PROJET JAVA\fruitstore\src\main\java\com\doranco\servlet\LoginServlet.java
+C:\Users\33651\Desktop\Cours Doranco\EVALUATION PROJET JAVA\fruitstore\src\main\java\com\doranco\daoImpl\CategorieDaoImpl.java
+C:\Users\33651\Desktop\Cours Doranco\EVALUATION PROJET JAVA\fruitstore\src\main\java\com\doranco\servlet\LogoutServlet.java
+C:\Users\33651\Desktop\Cours Doranco\EVALUATION PROJET JAVA\fruitstore\src\main\java\com\doranco\webservices\ressources\CommentaireRessource.java
+C:\Users\33651\Desktop\Cours Doranco\EVALUATION PROJET JAVA\fruitstore\src\main\java\com\doranco\daoImpl\CartePaiementDaoImpl.java
+C:\Users\33651\Desktop\Cours Doranco\EVALUATION PROJET JAVA\fruitstore\src\main\java\com\doranco\metier\Params.java
+C:\Users\33651\Desktop\Cours Doranco\EVALUATION PROJET JAVA\fruitstore\src\main\java\com\doranco\webservices\ressources\CommandeRessource.java
+C:\Users\33651\Desktop\Cours Doranco\EVALUATION PROJET JAVA\fruitstore\src\main\java\com\doranco\metier\Commentaire.java
 C:\Users\33651\Desktop\Cours Doranco\EVALUATION PROJET JAVA\fruitstore\src\main\java\com\doranco\dao\DaoFactory.java
 C:\Users\33651\Desktop\Cours Doranco\EVALUATION PROJET JAVA\fruitstore\src\main\java\com\doranco\metier\Article.java
 C:\Users\33651\Desktop\Cours Doranco\EVALUATION PROJET JAVA\fruitstore\src\main\java\com\doranco\metier\Utilisateur.java
 C:\Users\33651\Desktop\Cours Doranco\EVALUATION PROJET JAVA\fruitstore\src\main\java\com\doranco\metier\ArticlePanier.java
 C:\Users\33651\Desktop\Cours Doranco\EVALUATION PROJET JAVA\fruitstore\src\main\java\com\doranco\servlet\Sinscrire.java
 C:\Users\33651\Desktop\Cours Doranco\EVALUATION PROJET JAVA\fruitstore\src\main\java\com\meswebservices\RESTApplication.java
-C:\Users\33651\Desktop\Cours Doranco\EVALUATION PROJET JAVA\fruitstore\src\main\java\com\doranco\metier\Commande.java
 C:\Users\33651\Desktop\Cours Doranco\EVALUATION PROJET JAVA\fruitstore\src\main\java\com\doranco\filter\HomeFilter.java
 C:\Users\33651\Desktop\Cours Doranco\EVALUATION PROJET JAVA\fruitstore\src\main\java\com\doranco\metier\CartePaiement.java
+C:\Users\33651\Desktop\Cours Doranco\EVALUATION PROJET JAVA\fruitstore\src\main\java\com\doranco\daoImpl\UtilisateurDaoImpl.java
 C:\Users\33651\Desktop\Cours Doranco\EVALUATION PROJET JAVA\fruitstore\src\main\java\com\doranco\metier\Adresse.java
-C:\Users\33651\Desktop\Cours Doranco\EVALUATION PROJET JAVA\fruitstore\src\main\java\com\doranco\servlet\HomeServlet.java
-C:\Users\33651\Desktop\Cours Doranco\EVALUATION PROJET JAVA\fruitstore\src\main\java\com\doranco\servlet\LoginServlet.java
-C:\Users\33651\Desktop\Cours Doranco\EVALUATION PROJET JAVA\fruitstore\src\main\java\com\doranco\servlet\LogoutServlet.java
-C:\Users\33651\Desktop\Cours Doranco\EVALUATION PROJET JAVA\fruitstore\src\main\java\com\doranco\webservices\ressources\CommentaireRessource.java
+C:\Users\33651\Desktop\Cours Doranco\EVALUATION PROJET JAVA\fruitstore\src\main\java\com\doranco\daoImpl\AdresseDaoImpl.java
+C:\Users\33651\Desktop\Cours Doranco\EVALUATION PROJET JAVA\fruitstore\src\main\java\com\doranco\daoImpl\CommandeDaoImpl.java
 C:\Users\33651\Desktop\Cours Doranco\EVALUATION PROJET JAVA\fruitstore\src\main\java\com\doranco\metier\Categorie.java
-C:\Users\33651\Desktop\Cours Doranco\EVALUATION PROJET JAVA\fruitstore\src\main\java\com\doranco\metier\Params.java
-C:\Users\33651\Desktop\Cours Doranco\EVALUATION PROJET JAVA\fruitstore\src\main\java\com\doranco\webservices\ressources\CommandeRessource.java
-=======
-C:\Users\celes\git\FruitStore\src\main\java\com\doranco\daoImpl\ParamsDaoImpl.java
-C:\Users\celes\git\FruitStore\src\main\java\com\doranco\metier\Categorie.java
-C:\Users\celes\git\FruitStore\src\main\java\com\doranco\metier\Article.java
-C:\Users\celes\git\FruitStore\src\main\java\com\doranco\dao\Dao.java
-C:\Users\celes\git\FruitStore\src\main\java\Main.java
-C:\Users\celes\git\FruitStore\src\main\java\com\doranco\metier\CartePaiement.java
-C:\Users\celes\git\FruitStore\src\main\java\com\doranco\daoImpl\ArticlePanierDaoImpl.java
-C:\Users\celes\git\FruitStore\src\main\java\com\doranco\metier\Commentaire.java
-C:\Users\celes\git\FruitStore\src\main\java\com\doranco\metier\ArticlePanier.java
-C:\Users\celes\git\FruitStore\src\main\java\com\doranco\metier\Commande.java
-C:\Users\celes\git\FruitStore\src\main\java\com\doranco\metier\LigneDeCommande.java
-C:\Users\celes\git\FruitStore\src\main\java\com\doranco\metier\Utilisateur.java
-C:\Users\celes\git\FruitStore\src\main\java\com\doranco\metier\Params.java
-C:\Users\celes\git\FruitStore\src\main\java\com\doranco\daoImpl\CommandeDaoImpl.java
-C:\Users\celes\git\FruitStore\src\main\java\com\doranco\daoImpl\AdresseDaoImpl.java
-C:\Users\celes\git\FruitStore\src\main\java\com\doranco\daoImpl\UtilisateurDaoImpl.java
-C:\Users\celes\git\FruitStore\src\main\java\com\doranco\metier\Adresse.java
-C:\Users\celes\git\FruitStore\src\main\java\com\doranco\daoImpl\CommentaireDaoImpl.java
-C:\Users\celes\git\FruitStore\src\main\java\com\doranco\daoImpl\CategorieDaoImpl.java
-C:\Users\celes\git\FruitStore\src\main\java\com\doranco\daoImpl\CartePaiementDaoImpl.java
-C:\Users\celes\git\FruitStore\src\main\java\com\doranco\daoImpl\LigneDeCommandeDaoImpl.java
-C:\Users\celes\git\FruitStore\src\main\java\com\doranco\dao\DaoFactory.java
->>>>>>> d88bc73f5b13dfe726d5988869b621e9603bcc3d

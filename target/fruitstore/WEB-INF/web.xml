@@ -51,8 +51,16 @@
 		<filter-name>HomeFilter</filter-name>
 		<url-pattern>/home</url-pattern>
 	</filter-mapping>
-	<!-- <filter> <filter-name>LoginFilter</filter-name> <filter-class>com.doranco.filter.LoginFilter</filter-class> 
-		</filter> <filter-mapping> <filter-name>LoginFilter</filter-name> <url-pattern>/login</url-pattern> 
-		</filter-mapping> -->
+
+	<filter>
+		<filter-name>LoginFilter</filter-name>
+		<filter-class>com.doranco.filter.LoginFilter</filter-class>
+	</filter>
+
+	<filter-mapping>
+		<filter-name>LoginFilter</filter-name>
+		<url-pattern>/login</url-pattern>
+	</filter-mapping>
+	
 
 </web-app>

@@ -23,8 +23,16 @@ public class LoginServlet extends HttpServlet{
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		System.out.println("Login Servlet");		
+		HttpSession session=req.getSession(); 
+		if(session.getAttribute("utilisateur")!= null ) {
+			getServletContext().getRequestDispatcher("/WEB-INF/acceuil.xhtml").forward(req, resp);
+			
+		}else {
+			
+			getServletContext().getRequestDispatcher("/WEB-INF/login-utilisateur.xhtml").forward(req, resp);
+		}
 		
-		getServletContext().getRequestDispatcher("/WEB-INF/login-utilisateur.xhtml").forward(req, resp);
+		
 	}
 	
 	@Override
