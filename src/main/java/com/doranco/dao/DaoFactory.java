@@ -12,9 +12,9 @@ public class DaoFactory {
     
     private static DaoFactory DAO_FACTORY;
     private final EntityManagerFactory emf;
-    private final String PU_NAME = "doranco-fruitstore";
+    private final String PU_NAME = "fruit";
     
-    private DaoFactory() {
+    public DaoFactory() {
         this.emf = Persistence.createEntityManagerFactory(PU_NAME);
     }
     

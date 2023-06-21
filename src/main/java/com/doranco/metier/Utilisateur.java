@@ -3,14 +3,16 @@ package com.doranco.metier;
 import java.time.LocalDateTime;
 import java.util.List;
 
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="Utilisateur")
+@Table(name="utilisateur")
 public class Utilisateur {
 
 	@Id
@@ -33,15 +35,27 @@ public class Utilisateur {
 	
 	private String telephone;
 	
-	private Adresse adresse; 
+	@OneToMany(mappedBy = "utilisateur")
+	private List<Adresse> adresse;
+	//private Adresse adresse; 
 	
-	private Commande commande; 
+	@OneToMany(mappedBy = "utilisateur")
+	private List< Commande> commande; 
+	//private Commande commande; 
 	
-	private CartePaiement cartesDePaiement; 
+	@OneToMany(mappedBy = "utilisateur")
+	private List<CartePaiement> cartesDePaiement; 
+	//private CartePaiement cartesDePaiement; 
 	
-	private String commentaires; 
+	@OneToMany(mappedBy = "utilisateur")
+	private List<Commentaire> commentaires; 
+	//private String commentaires; 
 	
+	@OneToMany(mappedBy = "utilisateur")
 	private List<ArticlePanier> panier;
+	
+//	@Enumerated(EnumType.STRING)
+//	private Role role;
 
 	public int getId() {
 		return id;
@@ -107,44 +121,76 @@ public class Utilisateur {
 		this.password = password;
 	}
 
-	public String getTelephine() {
+	public String getTelephone() {
 		return telephone;
 	}
 
-	public void setTelephine(String telephine) {
-		this.telephone = telephine;
+	public void setTelephone(String telephone) {
+		this.telephone = telephone;
 	}
-
-	public Adresse getAdresse() {
+	
+//	public Adresse getAdresse() {
+//		return adresse;
+//	}
+//
+//	public void setAdresse(Adresse adresse) {
+//		this.adresse = adresse;
+//	}
+	
+	public List<Adresse> getAdresse() {
 		return adresse;
 	}
 
-	public void setAdresse(Adresse adresse) {
+	public void setAdresse(List<Adresse> adresse) {
 		this.adresse = adresse;
 	}
 
-	public Commande getCommande() {
+//	public Commande getCommande() {
+//		return commande;
+//	}
+//
+//	public void setCommande(Commande commande) {
+//		this.commande = commande;
+//	}
+	
+	public List<Commande> getCommande() {
 		return commande;
 	}
 
-	public void setCommande(Commande commande) {
+	public void setCommande(List<Commande> commande) {
 		this.commande = commande;
 	}
 
-	public CartePaiement getCartesDePaiement() {
+//	public CartePaiement getCartesDePaiement() {
+//		return cartesDePaiement;
+//	}
+//
+//	public void setCartesDePaiement(CartePaiement cartesDePaiement) {
+//		this.cartesDePaiement = cartesDePaiement;
+//	}
+	
+	public List<CartePaiement> getCartesDePaiement() {
 		return cartesDePaiement;
 	}
-
-	public void setCartesDePaiement(CartePaiement cartesDePaiement) {
+	
+	public void setCartesDePaiement(List<CartePaiement> cartesDePaiement) {
 		this.cartesDePaiement = cartesDePaiement;
 	}
 
-	public String getCommentaires() {
-		return commentaires;
-	}
-
-	public void setCommentaires(String commentaires) {
+//	public String getCommentaires() {
+//		return commentaires;
+//	}
+//
+//	public void setCommentaires(String commentaires) {
+//		this.commentaires = commentaires;
+//	}
+	
+	public void setCommentaires(List<Commentaire> commentaires) {
 		this.commentaires = commentaires;
+	}
+	
+	public List<Commentaire> getCommentaires() {
+		return commentaires;
 	}
 
 	public List<ArticlePanier> getPanier() {
@@ -154,12 +200,13 @@ public class Utilisateur {
 	public void setPanier(List<ArticlePanier> panier) {
 		this.panier = panier;
 	}
-	
-	
-	
-	
-	
-	
-	
+
+//	public Role getRole() {
+//		return role;
+//	}
+//
+//	public void setRole(Role role) {
+//		this.role = role;
+//	}
 	
 }

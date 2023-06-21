@@ -1,6 +1,7 @@
 package com.doranco.metier;
 
-import java.nio.file.Path;
+import java.nio.file.*;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -8,8 +9,14 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-@javax.persistence.Entity
-@javax.persistence.Table(name="Article")
+
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import javax.persistence.ManyToOne;
+
+@Entity
+@Table(name="article")
 public class Article {
 
 	@Id
@@ -28,12 +35,22 @@ public class Article {
 	
 	private boolean isVendable; 
 	
-	private Path photos; 
-	
-	private Path videos; 
-	
-	private String commentaires;
+	//private Path photos; 
 
+	//private Path videos; 
+	//TODO: MODIF TEMP pour test BDD
+	private String photos; 
+	//TODO: MODIF TEMP pour test BDD
+	private String videos; 
+	
+	@ManyToOne
+	@JoinColumn(name="categorie_id")
+	private Categorie categorie;
+	
+	@OneToMany(mappedBy = "article")
+	//private String commentaires;
+	private List<Commentaire> commentaires; 
+	
 	public int getId() {
 		return id;
 	}
@@ -90,31 +107,61 @@ public class Article {
 		this.isVendable = isVendable;
 	}
 
-	public Path getPhotos() {
-		return photos;
-	}
+//	public Path getPhotos() {
+//		return photos;
+//	}
+//
+//	public void setPhotos(Path photos) {
+//		this.photos = photos;
+//	}
+	
+	//TODO: MODIF TEMP pour test BDD
+//	public String getPhotos() {
+//		return photos;
+//	}
+//	
+//	public void setPhotos(String photos) {
+//		this.photos = photos;
+//	}
 
-	public void setPhotos(Path photos) {
-		this.photos = photos;
-	}
-
-	public Path getVideos() {
+//	public Path getVideos() {
+//		return videos;
+//	}
+//
+//	public void setVideos(Path videos) {
+//		this.videos = videos;
+//	}
+	
+	//TODO: MODIF TEMP pour test BDD
+	public String getVideos() {
 		return videos;
 	}
-
-	public void setVideos(Path videos) {
+	
+	public void setVideos(String videos) {
 		this.videos = videos;
 	}
 
-	public String getCommentaires() {
+//	public String getCommentaires() {
+//		return commentaires;
+//	}
+//
+//	public void setCommentaires(String commentaires) {
+//		this.commentaires = commentaires;
+//	} 
+	
+	public List<Commentaire> getCommentaires() {
 		return commentaires;
 	}
 
-	public void setCommentaires(String commentaires) {
+	public void setCommentaires(List<Commentaire> commentaires) {
 		this.commentaires = commentaires;
-	} 
+	}
 	
-	
-	
-	
+	public Categorie getCategorie() {
+		return categorie;
+	}
+
+	public void setCategorie(Categorie categorie) {
+		this.categorie = categorie;
+	}
 }

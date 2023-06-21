@@ -1,5 +1,6 @@
 package com.doranco.metier;
 
+
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -73,5 +74,6 @@ public class Adresse {
 	public void setUtilisateur(Utilisateur utilisateur) {
 		this.utilisateur = utilisateur;
 	}
+}	
 	
-}
+

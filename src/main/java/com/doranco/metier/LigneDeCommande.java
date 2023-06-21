@@ -4,10 +4,13 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="LigneDeCommande")
+@Table(name="ligne_commande")
 public class LigneDeCommande {
 	
 	@Id
@@ -20,8 +23,11 @@ public class LigneDeCommande {
 	
 	private double remiseArticle; 
 	
+	@ManyToOne
+	@JoinColumn(name="commande_id")
 	private Commande commande; 
 	
+	@OneToOne
 	private Article article;
 
 	public int getId() {
@@ -71,6 +77,4 @@ public class LigneDeCommande {
 	public void setArticle(Article article) {
 		this.article = article;
 	} 
-	
-	
 }

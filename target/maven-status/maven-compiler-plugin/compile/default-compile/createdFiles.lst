@@ -1,7 +1,12 @@
 com\doranco\dao\Dao.class
+<<<<<<< HEAD
 com\doranco\filter\LoginFilter.class
+=======
+>>>>>>> d88bc73f5b13dfe726d5988869b621e9603bcc3d
 com\doranco\metier\Utilisateur.class
+com\doranco\daoImpl\CommentaireDaoImpl.class
 com\doranco\metier\Params.class
+<<<<<<< HEAD
 com\doranco\dao\DaoFactory.class
 com\doranco\metier\Article.class
 com\doranco\metier\CartePaiement.class
@@ -19,3 +24,23 @@ com\doranco\metier\Adresse.class
 com\doranco\webservices\ressources\CommentaireRessource.class
 com\doranco\metier\Categorie.class
 com\doranco\metier\Commentaire.class
+=======
+com\doranco\daoImpl\ParamsDaoImpl.class
+com\doranco\dao\DaoFactory.class
+com\doranco\metier\Article.class
+com\doranco\metier\CartePaiement.class
+com\doranco\daoImpl\CommandeDaoImpl.class
+com\doranco\daoImpl\ArticlePanierDaoImpl.class
+com\doranco\daoImpl\UtilisateurDaoImpl.class
+com\doranco\metier\ArticlePanier.class
+com\doranco\daoImpl\AdresseDaoImpl.class
+Main.class
+com\doranco\metier\Commande.class
+com\doranco\metier\LigneDeCommande.class
+com\doranco\metier\Adresse.class
+com\doranco\daoImpl\LigneDeCommandeDaoImpl.class
+com\doranco\metier\Categorie.class
+com\doranco\metier\Commentaire.class
+com\doranco\daoImpl\CategorieDaoImpl.class
+com\doranco\daoImpl\CartePaiementDaoImpl.class
+>>>>>>> d88bc73f5b13dfe726d5988869b621e9603bcc3d

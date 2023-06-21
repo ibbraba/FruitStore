@@ -7,10 +7,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="Categorie")
+@Table(name="categorie")
 public class Categorie {
 	
 	@Id
@@ -23,8 +24,11 @@ public class Categorie {
 	
 	private boolean isRemiseCumulable; 
 	
-	private Path photo;
+	//private Path photo;
+	//TODO: MODIF TEMP pour test BDD
+	private String photo;
 	
+	@OneToMany(mappedBy = "categorie")
 	private List<Article> articles;
 
 	public int getId() {
@@ -59,11 +63,20 @@ public class Categorie {
 		this.isRemiseCumulable = isRemiseCumulable;
 	}
 
-	public Path getPhoto() {
+//	public Path getPhoto() {
+//		return photo;
+//	}
+//
+//	public void setPhoto(Path photo) {
+//		this.photo = photo;
+//	}
+	
+	//TODO: MODIF TEMP pour test BDD
+	public String getPhoto() {
 		return photo;
 	}
-
-	public void setPhoto(Path photo) {
+	
+	public void setPhoto(String photo) {
 		this.photo = photo;
 	}
 
@@ -75,8 +88,4 @@ public class Categorie {
 		this.articles = articles;
 	}
 	
-	
-	
-	
-
 }
