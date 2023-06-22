@@ -22,8 +22,9 @@ public class LogoutServlet extends HttpServlet {
 		HttpSession session = req.getSession(); 
 		session.removeAttribute("utilisateur");
 		
+		
 		//TODO: Vider Panier
-		getServletContext().getRequestDispatcher("/WEB-INF/login-utilisateur.xhtml").forward(req, resp);
+		getServletContext().getRequestDispatcher("/WEB-INF/login-utilisateur.jsp").forward(req, resp);
 	
 	}
 	

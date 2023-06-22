@@ -231,6 +231,15 @@ public class Utilisateur {
 		this.panier = panier;
 	}
 
+	@Override
+	public String toString() {
+		return "Utilisateur [id=" + id + ", nom=" + nom + ", prenom=" + prenom + ", DateNaissance=" + DateNaissance
+				+ ", isActif=" + isActif + ", profil=" + profil + ", email=" + email + ", password=" + password
+				+ ", telephone=" + telephone + ", adresse=" + adresse + ", commande=" + commande + ", cartesDePaiement="
+				+ cartesDePaiement + ", commentaires=" + commentaires + ", panier=" + panier + "]";
+	}
+
+	
 //	public Role getRole() {
 //		return role;
 //	}
