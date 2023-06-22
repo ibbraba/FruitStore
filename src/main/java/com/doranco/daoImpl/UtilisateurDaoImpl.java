@@ -3,9 +3,16 @@ package com.doranco.daoImpl;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+
+import com.doranco.dao.ConnectToDB;
 import com.doranco.dao.Dao;
 import com.doranco.dao.DaoFactory;
 import com.doranco.metier.Utilisateur;
@@ -19,7 +26,7 @@ public class UtilisateurDaoImpl implements Dao<Utilisateur>{
     private DaoFactory daoFactory;
     
     public UtilisateurDaoImpl() {
-        this.daoFactory = DaoFactory.getInstance();
+  
     }
     
     @Override
@@ -28,6 +35,7 @@ public class UtilisateurDaoImpl implements Dao<Utilisateur>{
         EntityTransaction entityTransaction = null;
         
         try {
+        	
             entityManager = daoFactory.getEntityManager();
             
             entityTransaction = entityManager.getTransaction();
@@ -75,18 +83,22 @@ public class UtilisateurDaoImpl implements Dao<Utilisateur>{
     
     public Utilisateur findByCredentials(String email, String password) {
         
-        EntityManager entityManager = null;
-        
-        Utilisateur utilisateur = new Utilisateur();
-        
+
+      	Utilisateur utilisateur = new Utilisateur(); 
         try{
-            entityManager = daoFactory.getEntityManager();
-            
-            var query = entityManager.createQuery("SELECT * FROM utilisateur WHERE email=:email AND password=:password");
-            query.setParameter("email", email);
-            query.setParameter("password", password);
-            
-             utilisateur = (Utilisateur) query.getSingleResult();
+        	
+        	   Connection cnn = ConnectToDB.getConnection();
+        	   PreparedStatement req = cnn.prepareStatement( "SELECT u FROM Utilisateur u WHERE email=? AND password=? ");
+        	   req.setString(1, email);
+        	   req.setString(2, password);
+               ResultSet resultSet = req.executeQuery();
+             
+               utilisateur.setNom(resultSet.getString("nom"));
+               utilisateur.setPrenom(resultSet.getString("prenom"));
+               utilisateur.setEmail(resultSet.getString("email"));
+               utilisateur.setPassword(resultSet.getString("password"));
+               
+               
             if(utilisateur == null) {
             	 System.out.println("User not found");
             	
@@ -94,10 +106,8 @@ public class UtilisateurDaoImpl implements Dao<Utilisateur>{
         }catch(Exception e) {
            // System.out.println("Erreur de recherche id " + id+ " inexistant en DB");
             System.out.println("Message: " + e.getMessage());
-         }finally {
-            if(entityManager != null)
-                entityManager.close();
-        }
+         }
+        
         return utilisateur;
     }
     

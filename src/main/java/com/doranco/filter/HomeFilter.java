@@ -33,9 +33,12 @@ public class HomeFilter implements Filter {
 
 		if (utilisateur != null) {
 			System.out.println("Utilisateur connecté, redirection vers une des pages de gestion ");
+			session.setAttribute("utilisateur", utilisateur);
+		
+			
 			// TODO change to profil enum
 			if (utilisateur.getProfil().equals("Magasinier")) {
-				req.getRequestDispatcher("/WEB-INF/gestion-articles.xhtml").forward(request, response);
+				req.getRequestDispatcher("/WEB-INF/gestion-articles.jsp").forward(request, response);
 			} else if (utilisateur.getProfil().equals("Admin")) {
 				req.getRequestDispatcher("/WEB-INF/gestion-admin.xhtml").forward(request, response);
 
@@ -45,7 +48,7 @@ public class HomeFilter implements Filter {
 
 		}else {
 			System.out.println("Pas d'utilisateur connecté, retour à l'acceuil");
-			req.getRequestDispatcher("/WEB-INF/acceuil.xhtml").forward(request, response);
+			req.getRequestDispatcher("/WEB-INF/acceuil.jsp").forward(request, response);
 		}
 
 		System.out.println("Home Filter END");

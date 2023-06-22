@@ -36,17 +36,17 @@ public class LoginFilter implements Filter {
 				System.out.println("Utilisateur connecté, redirection vers une des pages de gestion ");
 				// TODO change to profil enum
 				if (utilisateur.getProfil().equals("Magasinier")) {
-					req.getRequestDispatcher("/WEB-INF/gestion-articles.xhtml").forward(request, response);
+					req.getRequestDispatcher("/WEB-INF/gestion-articles.jsp").forward(request, response);
 				} else if (utilisateur.getProfil().equals("Admin")) {
-					req.getRequestDispatcher("/WEB-INF/gestion-admin.xhtml").forward(request, response);
+					req.getRequestDispatcher("/WEB-INF/gestion-admin.jsp").forward(request, response);
 
 				} else {
-					req.getRequestDispatcher("/WEB-INF/gestion-achats.xhtml").forward(request, response);
+					req.getRequestDispatcher("/WEB-INF/gestion-achats.jsp").forward(request, response);
 				}
 
 			}else {
 				System.out.println("Pas d'utilisateur connecté, page de connexeion");
-				req.getRequestDispatcher("/WEB-INF/login-utilisateur.xhtml").forward(request, response);
+				req.getRequestDispatcher("/WEB-INF/login-utilisateur.jsp").forward(request, response);
 			}
 		}else {
 			 chain.doFilter(request, response );

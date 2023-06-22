@@ -2,6 +2,7 @@ C:\Users\33651\Desktop\Cours Doranco\EVALUATION PROJET JAVA\fruitstore\src\main\
 C:\Users\33651\Desktop\Cours Doranco\EVALUATION PROJET JAVA\fruitstore\src\main\java\com\doranco\dao\Dao.java
 C:\Users\33651\Desktop\Cours Doranco\EVALUATION PROJET JAVA\fruitstore\src\main\java\com\doranco\metier\LigneDeCommande.java
 C:\Users\33651\Desktop\Cours Doranco\EVALUATION PROJET JAVA\fruitstore\src\main\java\com\doranco\filter\LoginFilter.java
+C:\Users\33651\Desktop\Cours Doranco\EVALUATION PROJET JAVA\fruitstore\src\main\java\com\doranco\fixtures\AdresseFixtures.java
 C:\Users\33651\Desktop\Cours Doranco\EVALUATION PROJET JAVA\fruitstore\src\main\java\com\doranco\daoImpl\ArticlePanierDaoImpl.java
 C:\Users\33651\Desktop\Cours Doranco\EVALUATION PROJET JAVA\fruitstore\src\main\java\com\doranco\filter\SinscrireFilter.java
 C:\Users\33651\Desktop\Cours Doranco\EVALUATION PROJET JAVA\fruitstore\src\main\java\com\doranco\metier\Commande.java
@@ -20,13 +21,17 @@ C:\Users\33651\Desktop\Cours Doranco\EVALUATION PROJET JAVA\fruitstore\src\main\
 C:\Users\33651\Desktop\Cours Doranco\EVALUATION PROJET JAVA\fruitstore\src\main\java\com\doranco\dao\DaoFactory.java
 C:\Users\33651\Desktop\Cours Doranco\EVALUATION PROJET JAVA\fruitstore\src\main\java\com\doranco\metier\Article.java
 C:\Users\33651\Desktop\Cours Doranco\EVALUATION PROJET JAVA\fruitstore\src\main\java\com\doranco\metier\Utilisateur.java
+C:\Users\33651\Desktop\Cours Doranco\EVALUATION PROJET JAVA\fruitstore\src\main\java\com\doranco\services\UtilisateurService.java
 C:\Users\33651\Desktop\Cours Doranco\EVALUATION PROJET JAVA\fruitstore\src\main\java\com\doranco\metier\ArticlePanier.java
+C:\Users\33651\Desktop\Cours Doranco\EVALUATION PROJET JAVA\fruitstore\src\main\java\com\doranco\fixtures\UtilisateurFixtures.java
 C:\Users\33651\Desktop\Cours Doranco\EVALUATION PROJET JAVA\fruitstore\src\main\java\com\meswebservices\RESTApplication.java
 C:\Users\33651\Desktop\Cours Doranco\EVALUATION PROJET JAVA\fruitstore\src\main\java\com\doranco\filter\HomeFilter.java
 C:\Users\33651\Desktop\Cours Doranco\EVALUATION PROJET JAVA\fruitstore\src\main\java\com\doranco\metier\CartePaiement.java
+C:\Users\33651\Desktop\Cours Doranco\EVALUATION PROJET JAVA\fruitstore\src\main\java\com\doranco\dao\ConnectToDB.java
 C:\Users\33651\Desktop\Cours Doranco\EVALUATION PROJET JAVA\fruitstore\src\main\java\com\doranco\daoImpl\UtilisateurDaoImpl.java
 C:\Users\33651\Desktop\Cours Doranco\EVALUATION PROJET JAVA\fruitstore\src\main\java\com\doranco\metier\Adresse.java
 C:\Users\33651\Desktop\Cours Doranco\EVALUATION PROJET JAVA\fruitstore\src\main\java\com\doranco\daoImpl\AdresseDaoImpl.java
 C:\Users\33651\Desktop\Cours Doranco\EVALUATION PROJET JAVA\fruitstore\src\main\java\com\doranco\daoImpl\CommandeDaoImpl.java
+C:\Users\33651\Desktop\Cours Doranco\EVALUATION PROJET JAVA\fruitstore\src\main\java\com\doranco\fixtures\CartePaiementFixtures.java
 C:\Users\33651\Desktop\Cours Doranco\EVALUATION PROJET JAVA\fruitstore\src\main\java\com\doranco\metier\Categorie.java
 C:\Users\33651\Desktop\Cours Doranco\EVALUATION PROJET JAVA\fruitstore\src\main\java\com\doranco\servlet\SinscrireServlet.java
