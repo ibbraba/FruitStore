@@ -47,9 +47,9 @@ public class Article {
 	@JoinColumn(name="categorie_id")
 	private Categorie categorie;
 	
-	@OneToMany(mappedBy = "article")
+	@OneToMany(mappedBy = "article") 
+	private List<Commentaire> commentaires; // Non présent dans la table Article. A checker !! 
 	//private String commentaires;
-	private List<Commentaire> commentaires; 
 	
 	public int getId() {
 		return id;
@@ -116,13 +116,13 @@ public class Article {
 //	}
 	
 	//TODO: MODIF TEMP pour test BDD
-//	public String getPhotos() {
-//		return photos;
-//	}
-//	
-//	public void setPhotos(String photos) {
-//		this.photos = photos;
-//	}
+	public String getPhotos() {
+		return photos;
+	}
+	
+	public void setPhotos(String photos) {
+		this.photos = photos;
+	}
 
 //	public Path getVideos() {
 //		return videos;

@@ -11,6 +11,6 @@
 	<h1> Bienvenue chez fruitsotre</h1>
 	<p>${message}</p>
 	<p><%= request.getAttribute("message") %></p>
-	<p>{{requestScope.message}</p>
+	<p>${requestScope.message}</p>
 </body>
 </html>

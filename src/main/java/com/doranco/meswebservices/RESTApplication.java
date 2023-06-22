@@ -1,4 +1,4 @@
-package com.meswebservices;
+package com.doranco.meswebservices;
 
 
 import javax.ws.rs.ApplicationPath;

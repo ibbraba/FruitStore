@@ -8,7 +8,7 @@ import javax.persistence.Persistence;
  *
  * @author celes
  */
-public class DaoFactory {
+public final class DaoFactory {
     
     private static DaoFactory DAO_FACTORY;
     private final EntityManagerFactory emf;

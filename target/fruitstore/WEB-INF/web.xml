@@ -48,6 +48,11 @@
 	</servlet-mapping>
 
 
+	<welcome-file-list>
+    <welcome-file>home.jsp</welcome-file>
+	</welcome-file-list>
+
+
 	<filter>
 		<filter-name>HomeFilter</filter-name>
 		<filter-class>com.doranco.filter.HomeFilter</filter-class>
